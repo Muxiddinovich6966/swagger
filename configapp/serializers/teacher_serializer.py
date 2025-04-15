@@ -3,7 +3,7 @@ from rest_framework import serializers
 from . import UserSerializer
 from ..models import *
 
-class TeacherSerisalizer(serializers.ModelSerializer):
+class TeacherSerializer(serializers.ModelSerializer):
     user = serializers.CharField(read_only=True)
 
     class Meta:
@@ -29,4 +29,4 @@ class TeacherUserSerializer(serializers.ModelSerializer):
 
 class TeacherPostSerializer(serializers.Serializer):
     user = TeacherUserSerializer()
-    teacher = TeacherSerisalizer()
+    teacher = TeacherSerializer()

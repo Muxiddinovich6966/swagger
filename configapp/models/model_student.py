@@ -9,4 +9,4 @@ class Student(BaseModel):
 
 
     def __str__(self):
-        return self.phone_number
+        return self.user.phone_number

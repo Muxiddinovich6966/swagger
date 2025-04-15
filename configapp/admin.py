@@ -2,4 +2,4 @@
 from django.contrib import admin
 from .models import *
 # Register your models here.
-admin.site.register([Teacher,Departments,Course,User,Student])
+admin.site.register([Teacher,Departments,Course,User,Student,GroupStudent])
