@@ -5,20 +5,19 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
-
 from configapp.models import Teacher
 from configapp.serializers import TeacherSerializer
-
-
 from ..serializers.teacher_serializer import TeacherSerializer, TeacherPostSerializer, TeacherUserSerializer
 from ..models import User
-
-
+from configapp.permissions import IsGetOrPatchOnly
+from configapp.pagination import TeacherPagination
 
 
 class TeacherViewSet(viewsets.ModelViewSet):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
+    pagination_class = TeacherPagination
+    permission_classes = [IsGetOrPatchOnly]
 
     def get_serializer_class(self):
         data={'success':True}
@@ -57,6 +56,16 @@ class TeacherViewSet(viewsets.ModelViewSet):
             'success': True
         }
         return Response(response_data, status=status.HTTP_201_CREATED)
+
+
+
+from configapp.pagination import TeacherPagination
+
+
+class TeacherViewSet(viewsets.ModelViewSet):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherSerializer
+    pagination_class = TeacherPagination
 
 
 
